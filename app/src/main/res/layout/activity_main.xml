@@ -21,16 +21,72 @@
 
     <NumberPicker
         android:id="@+id/numPick1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_width="131dp"
+        android:layout_height="232dp"
+        android:layout_marginBottom="368dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
 
     <NumberPicker
         android:id="@+id/numPick2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="331dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_width="131dp"
+        android:layout_height="232dp"
+        android:layout_marginBottom="368dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.757"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="148dp"
+        android:layout_height="63dp"
+        android:layout_marginBottom="128dp"
+        android:text="@string/start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/toggleSound"
+        android:layout_width="131dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="244dp"
+        android:text="@string/sound"
+        android:textOff="@string/sound_off"
+        android:textOn="@string/sound_on"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+    <ToggleButton
+        android:id="@+id/toggleVibration"
+        android:layout_width="131dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="244dp"
+        android:text="@string/vibration"
+        android:textOff="@string/vibration_off"
+        android:textOn="@string/vibration_on"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.757"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="89dp"
+        android:clickable="false"
+        android:text="@string/quick_start"
+        android:gravity="center"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp"
+        tools:padding="20dp" />
 
 </android.support.constraint.ConstraintLayout>

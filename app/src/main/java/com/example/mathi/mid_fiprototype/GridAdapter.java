@@ -11,7 +11,7 @@ import android.widget.ImageView;
 public class GridAdapter extends BaseAdapter{
 
     private Context mContext;
-    private String[] values[];
+    private String values[];
     private int icons[];
     private LayoutInflater layoutInflater;
 

@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.mathi.mid_fiprototype.Timer">
 
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        tools:layout_editor_absoluteX="166dp"
+        tools:layout_editor_absoluteY="236dp" />
 </android.support.constraint.ConstraintLayout>

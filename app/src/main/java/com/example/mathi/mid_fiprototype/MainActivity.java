@@ -1,5 +1,6 @@
 package com.example.mathi.mid_fiprototype;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.GridView;
@@ -20,8 +23,12 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     };
     String valuesList[] = {" ", " ", " ", " " };
-    NumberPicker numPick1;
-    NumberPicker numPick2;
+    private NumberPicker numPick1;
+    private NumberPicker numPick2;
+    private Button startButton;
+    private static float numPickValue1;
+    private static float numPickValue2;
+    public String textView = "Quick Start";
 
     private GestureDetectorCompat gDetector;
 
@@ -50,22 +57,49 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        init();
 
-        gridView = (GridView) findViewById(R.id.grid);
+    }
+    public void init(){
+        //Initialize gridView for saved exercise profiles
+        gridView = findViewById(R.id.grid);
         GridAdapter gridAdapter = new GridAdapter(MainActivity.this, iconsList, valuesList );
 
+        //Initialize BottomNavigationView
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        //Initialize GestureDetector
         gDetector = new GestureDetectorCompat(this, this);
 
+        //Initialize NumberPickers and set min and max values
         numPick1 = findViewById(R.id.numPick1);
         numPick2 = findViewById(R.id.numPick2);
         numPick1.setMinValue(1);
         numPick1.setMaxValue(2);
         numPick2.setMinValue(1);
         numPick2.setMaxValue(4);
+
+        //Initialize startButton and set onClick listener
+        startButton = findViewById(R.id.startButton);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                runQuickStart();
+            }
+        });
+    }
+    public void runQuickStart(){
+        Intent startTimer = new Intent(MainActivity.this, Timer.class);
+        startActivity(startTimer);
+    }
+    public static float getNumPickValue1() {
+        return numPickValue1;
+    }
+
+    public static float getNumPickValue2() {
+        return numPickValue2;
     }
 
     @Override
@@ -85,12 +119,17 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     @Override
     public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        if(motionEvent.getY ()< motionEvent1.getY()){
+            numPickValue1 = numPick1.getValue();
+            numPickValue2 = numPick2.getValue();
+            return false;
+        }
         return false;
     }
 
     @Override
     public void onLongPress(MotionEvent motionEvent) {
-
+        return;
     }
 
     @Override
