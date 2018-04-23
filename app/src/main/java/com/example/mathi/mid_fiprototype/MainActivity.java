@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     private NumberPicker numPick1;
     private NumberPicker numPick2;
     private Button startButton;
-    private static float numPickValue1;
-    private static float numPickValue2;
+    private static long numPickValue1;
+    private static long numPickValue2;
     public String textView = "Quick Start";
 
     private GestureDetectorCompat gDetector;
@@ -94,11 +94,11 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         Intent startTimer = new Intent(MainActivity.this, Timer.class);
         startActivity(startTimer);
     }
-    public static float getNumPickValue1() {
+    public static long getNumPickValue1() {
         return numPickValue1;
     }
 
-    public static float getNumPickValue2() {
+    public static long getNumPickValue2() {
         return numPickValue2;
     }
 
