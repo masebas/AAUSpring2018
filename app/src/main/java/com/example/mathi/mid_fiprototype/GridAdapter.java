@@ -9,14 +9,17 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GridAdapter extends BaseAdapter{
 
     private Context mContext;
-    private String values[];
-    private int icons[];
+    private List<String> values = new ArrayList<String>();
+    private List<Integer> icons = new ArrayList<Integer>();
     private LayoutInflater layoutInflater;
 
-    public GridAdapter(Context mContext, int icons[], String values[]){
+    public GridAdapter(Context mContext, List<Integer> icons, List<String> values){
         this.mContext = mContext;
         this.icons = icons;
         this.values = values;
@@ -27,12 +30,12 @@ public class GridAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return values.length;
+        return values.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return values[position];
+        return values.get(position);
     }
 
     @Override
@@ -51,8 +54,8 @@ public class GridAdapter extends BaseAdapter{
         }
         ImageView icon = (ImageView) gridView.findViewById(R.id.icons);
         TextView value = (TextView) gridView.findViewById(R.id.values);
-        icon.setImageResource(icons[position]);
-        value.setText(values[position]);
+        icon.setImageResource(icons.get(position));
+        value.setText(values.get(position));
 
         return gridView;
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
@@ -19,9 +20,10 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     private TextView mTextMessage;
     private GridView gridView;
-    private NumberPicker numPick1;
-    private NumberPicker numPick2;
+    private static NumberPicker numPick1;
+    private static NumberPicker numPick2;
     private Button startButton;
+    private Button saveButton;
     private static long numPickValue1;
     private static long numPickValue2;
     public String textView = "Quick Start";
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         numPick1.setMaxValue(2);
         numPick2.setMinValue(1);
         numPick2.setMaxValue(4);
+        numPick1.setWrapSelectorWheel(true);
+        numPick2.setWrapSelectorWheel(true);
 
         //Initialize startButton and set onClick listener
         startButton = findViewById(R.id.startButton);
@@ -79,6 +83,14 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             @Override
             public void onClick(View view) {
                 runQuickStart();
+            }
+        });
+        //Initialize saveButton and set onClick listener
+        saveButton = findViewById(R.id.saveButton);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveExercise();
             }
         });
     }
@@ -92,6 +104,10 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         Intent showGrid = new Intent(MainActivity.this, MyExercises.class);
         startActivity(showGrid);
     }
+    public void saveExercise(){
+        DialogFragment dFragment = new SaveDialog();
+        dFragment.show(getSupportFragmentManager(), "save");
+    }
     public static long getNumPickValue1() {
         //Returns the number value from the first Number Picker
         return numPickValue1;
@@ -101,7 +117,14 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         //Returns the number value from the second Number Picker
         return numPickValue2;
     }
-
+    public static void setNumPickValue1(long i){
+        Long x = i;
+        numPick1.setValue(x.intValue());
+    }
+    public static void setNumPickValue2(long i){
+        Long x = i;
+        numPick2.setValue(x.intValue());
+    }
     @Override
     public boolean onDown(MotionEvent motionEvent) {
         return false;
@@ -109,7 +132,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     @Override
     public void onShowPress(MotionEvent motionEvent) {
-
     }
 
     @Override
@@ -119,13 +141,11 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     @Override
     public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-
         return false;
     }
 
     @Override
     public void onLongPress(MotionEvent motionEvent) {
-        return;
     }
 
     @Override

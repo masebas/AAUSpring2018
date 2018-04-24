@@ -21,7 +21,7 @@
 
     <NumberPicker
         android:id="@+id/numPick1"
-        android:layout_width="131dp"
+        android:layout_width="134dp"
         android:layout_height="232dp"
         android:layout_marginBottom="368dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,16 +38,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.757"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
     <Button
         android:id="@+id/startButton"
-        android:layout_width="148dp"
-        android:layout_height="63dp"
+        android:layout_width="131dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="128dp"
         android:text="@string/start"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.221"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -88,5 +89,16 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="2dp"
         tools:padding="20dp" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="131dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="128dp"
+        android:text="Save as new profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.757"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

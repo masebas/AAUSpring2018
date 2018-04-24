@@ -1,5 +1,6 @@
 package com.example.mathi.mid_fiprototype;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -8,33 +9,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyExercises extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
-    int iconsList[] = {
-            R.drawable.icon,
-            R.drawable.icon,
-            R.drawable.icon,
-            R.drawable.icon,
-            R.drawable.icon,
-            R.drawable.icon,
-            R.drawable.icon,
-            R.drawable.icon,
-            R.drawable.icon,
-            R.drawable.icon,
+    private static List<Integer> iconsList = new ArrayList<Integer>();
+    private static List<String> valuesList = new ArrayList<String>();
+    private static List<Exercise> exerciseList = new ArrayList<Exercise>();
 
-    };
-    String valuesList[] = {
-            "Test",
-            "Test",
-            "Test",
-            "Test",
-            "Test",
-            "Test",
-            "Test",
-            "Test",
-            "Test",
-            "Test",
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +31,19 @@ public class MyExercises extends AppCompatActivity implements GestureDetector.On
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                //Executes when an item in the grid is clicked
+                MainActivity.setNumPickValue1(exerciseList.get(position).getValue1());
+                MainActivity.setNumPickValue2(exerciseList.get(position).getValue2());
+                Intent startTimer = new Intent(MyExercises.this, Timer.class);
+                startActivity(startTimer);
             }
         });
 
+    }
+
+    public static void newExercise(Exercise e){
+        valuesList.add(e.getName());
+        iconsList.add(R.drawable.icon);
+        exerciseList.add(e);
     }
 
     @Override
