@@ -8,9 +8,9 @@
 
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/grid"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:columnWidth="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnWidth="100dp"
         android:numColumns="auto_fit"
         android:verticalSpacing="75dp"
         android:horizontalSpacing="10dp"

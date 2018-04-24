@@ -19,10 +19,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     private TextView mTextMessage;
     private GridView gridView;
-    int iconsList[] = {R.drawable.icon,
-
-    };
-    String valuesList[] = {" ", " ", " ", " " };
     private NumberPicker numPick1;
     private NumberPicker numPick2;
     private Button startButton;
@@ -61,10 +57,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     }
     public void init(){
-        //Initialize gridView for saved exercise profiles
-        gridView = findViewById(R.id.grid);
-        GridAdapter gridAdapter = new GridAdapter(MainActivity.this, iconsList, valuesList );
-
         //Initialize BottomNavigationView
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -91,14 +83,22 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         });
     }
     public void runQuickStart(){
+        //Runs the Timer.java activity
         Intent startTimer = new Intent(MainActivity.this, Timer.class);
         startActivity(startTimer);
     }
+    public void showGridMenu(){
+        //Runs the MyExercises.java activity
+        Intent showGrid = new Intent(MainActivity.this, MyExercises.class);
+        startActivity(showGrid);
+    }
     public static long getNumPickValue1() {
+        //Returns the number value from the first Number Picker
         return numPickValue1;
     }
 
     public static long getNumPickValue2() {
+        //Returns the number value from the second Number Picker
         return numPickValue2;
     }
 
@@ -119,11 +119,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     @Override
     public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-        if(motionEvent.getY ()< motionEvent1.getY()){
-            numPickValue1 = numPick1.getValue();
-            numPickValue2 = numPick2.getValue();
-            return false;
-        }
+
         return false;
     }
 
@@ -134,6 +130,16 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     @Override
     public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        if(motionEvent.getY() > motionEvent1.getY()){
+            showGridMenu();
+            return true;
+        }
         return false;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
     }
 }

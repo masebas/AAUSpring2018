@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class GridAdapter extends BaseAdapter{
 
@@ -48,9 +49,10 @@ public class GridAdapter extends BaseAdapter{
             layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             gridView = layoutInflater.inflate(R.layout.custom_layout, null);
         }
-        ImageView icon = (ImageView) gridView.findViewById(R.id.imageView);
-
+        ImageView icon = (ImageView) gridView.findViewById(R.id.icons);
+        TextView value = (TextView) gridView.findViewById(R.id.values);
         icon.setImageResource(icons[position]);
+        value.setText(values[position]);
 
         return gridView;
 
