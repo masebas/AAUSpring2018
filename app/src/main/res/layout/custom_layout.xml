@@ -9,19 +9,52 @@
         android:id="@+id/icons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="6dp"
         app:srcCompat="@drawable/icon" />
 
     <TextView
         android:id="@+id/values"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/icons"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="0dp"
-        android:textSize="25sp"
+        android:layout_width="120dp"
+        android:layout_height="62dp"
+        android:layout_alignTop="@+id/icons"
         android:layout_centerHorizontal="true"
-        android:text="Text" />
+        android:text="Text"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/conTime"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/values"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:text="Concentric:" />
+
+    <TextView
+        android:id="@+id/eccTime"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/values"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="Eccentric:" />
+
+    <TextView
+        android:id="@+id/soundCheck"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/values"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="Sound:" />
+
+    <TextView
+        android:id="@+id/vibCheck"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/values"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:text="Vibration:" />
 </RelativeLayout>

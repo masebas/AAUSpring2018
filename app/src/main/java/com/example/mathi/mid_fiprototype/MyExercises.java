@@ -17,6 +17,10 @@ public class MyExercises extends AppCompatActivity implements GestureDetector.On
     private static List<Integer> iconsList = new ArrayList<Integer>();
     private static List<String> valuesList = new ArrayList<String>();
     private static List<Exercise> exerciseList = new ArrayList<Exercise>();
+    private static List<String> eccTime = new ArrayList<String>();
+    private static List<String> conTime = new ArrayList<String>();
+    private static List<String> soundCheck = new ArrayList<String>();
+    private static List<String> vibCheck = new ArrayList<String>();
 
 
     @Override
@@ -25,15 +29,19 @@ public class MyExercises extends AppCompatActivity implements GestureDetector.On
         setContentView(R.layout.activity_my_exercises);
 
         GridView grid = (GridView) findViewById(R.id.grid);
-        GridAdapter adapter = new GridAdapter(MyExercises.this, iconsList, valuesList);
+        GridAdapter adapter = new GridAdapter(MyExercises.this, iconsList, valuesList, eccTime, conTime, soundCheck, vibCheck);
         grid.setAdapter(adapter);
 
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                MainActivity.setNumPickValue1(exerciseList.get(position).getValue1());
-                MainActivity.setNumPickValue2(exerciseList.get(position).getValue2());
+                Bundle extras = new Bundle();
+                extras.putLong("time1", exerciseList.get(position).getValue1());
+                extras.putLong("time2", exerciseList.get(position).getValue2());
+                extras.putBoolean("soundOn", exerciseList.get(position).isSound());
+                extras.putBoolean("vibOn", exerciseList.get(position).isVibration());
                 Intent startTimer = new Intent(MyExercises.this, Timer.class);
+                startTimer.putExtras(extras);
                 startActivity(startTimer);
             }
         });
@@ -43,6 +51,18 @@ public class MyExercises extends AppCompatActivity implements GestureDetector.On
     public static void newExercise(Exercise e){
         valuesList.add(e.getName());
         iconsList.add(R.drawable.icon);
+        eccTime.add(Long.toString(e.getValue2()));
+        conTime.add(Long.toString(e.getValue1()));
+        if(e.isSound()){
+            soundCheck.add("On");
+        } else if(!e.isSound()){
+            soundCheck.add("Off");
+        }
+        if(e.isVibration()){
+            vibCheck.add("On");
+        } else if(!e.isVibration()){
+            vibCheck.add("Off");
+        }
         exerciseList.add(e);
     }
 

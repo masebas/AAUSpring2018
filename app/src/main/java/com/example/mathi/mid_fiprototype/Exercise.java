@@ -5,8 +5,12 @@ public class Exercise {
     private String name;
     private long value1;
     private long value2;
+    private boolean sound;
+    private boolean vibration;
 
-    public Exercise(String name, long value1, long value2){
+    public Exercise(String name, long value1, long value2, boolean sound, boolean vibration){
+        this.vibration = vibration;
+        this.sound = sound;
         this.name = name;
         this.value1 = value1;
         this.value2 = value2;
@@ -34,5 +38,21 @@ public class Exercise {
 
     public void setValue2(long value2) {
         this.value2 = value2;
+    }
+
+    public boolean isSound() {
+        return sound;
+    }
+
+    public void setSound(boolean sound) {
+        this.sound = sound;
+    }
+
+    public boolean isVibration() {
+        return vibration;
+    }
+
+    public void setVibration(boolean vibration) {
+        this.vibration = vibration;
     }
 }
