@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Mid-Fi Prototype</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="vibration_on">Vibration On</string>
+    <string name="vibration_off">Vibration Off</string>
+    <string name="vibration">Vibration</string>
+    <string name="quick_start">Quick Start</string>
+    <string name="sound_on">Sound On</string>
+    <string name="sound_off">Sound Off</string>
+    <string name="sound">Sound</string>
+    <string name="start">Start</string>
+    <string name="time" />
+</resources>
