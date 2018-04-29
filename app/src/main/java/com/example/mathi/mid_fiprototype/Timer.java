@@ -26,6 +26,7 @@ public class Timer extends AppCompatActivity {
     private boolean vibOn;
     private boolean soundOn;
     private Vibrator vib;
+    private MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,6 @@ public class Timer extends AppCompatActivity {
         timer = findViewById(R.id.timer);
         mStartButton = findViewById(R.id.button_start);
         mStopButton = findViewById(R.id.button_stop);
-
 
         vib = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
         mStartButton.setEnabled(false);
@@ -64,14 +64,13 @@ public class Timer extends AppCompatActivity {
         countDownTimer.cancel();
     }
     public void playInterval(){
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.interval);
+        mp = MediaPlayer.create(this, R.raw.interval);
         mp.start();
-        mp.release();
+
     }
     public void playFinish(){
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.finish);
+        mp = MediaPlayer.create(this, R.raw.finish);
         mp.start();
-        mp.release();
     }
 
     @TargetApi(26)
@@ -88,25 +87,27 @@ public class Timer extends AppCompatActivity {
     }
 
     public void calcTime(int stage){
-        final MediaPlayer mp1 = MediaPlayer.create(this,R.raw.interval);
-        final MediaPlayer mp2 = MediaPlayer.create(this, R.raw.finish);
+        mp = MediaPlayer.create(this,R.raw.interval);
 
 
         if(stage == 0) {
             countDownTimer = new CountDownTimer(timeMillis1, 1) {
                 @Override
                 public void onTick(long l) {
-                    if(l == 100){
-                        countDownTimer.cancel();
-                        calcTime(1);
-                    } else {
-                        timer.setText(Long.toString(l/100));
-                    }
+                    timer.setText(Long.toString(l/100));
                     if(soundOn) {
-                        if(l <= 1000 && l >= 950) {mp1.start();}
-                        if(l <= 2000 && l >= 1950) {mp1.start();}
-                        if(l <= 3000 && l >= 2950) {mp1.start();}
-                        if(l <= 4000 && l >= 3950) {mp1.start();}
+                        if(l <= 1000 && l >= 950) {
+                            mp.release();
+                            playInterval();}
+                        if(l <= 2000 && l >= 1950) {
+                            mp.release();
+                            playInterval();}
+                        if(l <= 3000 && l >= 2950) {
+                            mp.release();
+                            playInterval();}
+                        if(l <= 4000 && l >= 3950) {
+                            mp.release();
+                            playInterval();}
                     }
                 }
 
@@ -116,7 +117,8 @@ public class Timer extends AppCompatActivity {
                         vibrate();
                     }
                     if(soundOn){
-                        mp2.start();
+                        mp.release();
+                        playFinish();
                     }
                     calcTime(1);
                 }
@@ -127,17 +129,20 @@ public class Timer extends AppCompatActivity {
             countDownTimer = new CountDownTimer(timeMillis2, 1) {
                 @Override
                 public void onTick(long l) {
-                    if(l == 100){
-                        countDownTimer.cancel();
-                        calcTime(0);
-                    } else {
-                        timer.setText(Long.toString(l/100));
-                    }
+                    timer.setText(Long.toString(l/100));
                     if(soundOn) {
-                        if(l <= 1000 && l >= 950) {mp1.start();}
-                        if(l <= 2000 && l >= 1950) {mp1.start();}
-                        if(l <= 3000 && l >= 2950) {mp1.start();}
-                        if(l <= 4000 && l >= 3950) {mp1.start();}
+                        if(l <= 1000 && l >= 950) {
+                            mp.release();
+                            playInterval();}
+                        if(l <= 2000 && l >= 1950) {
+                            mp.release();
+                            playInterval();}
+                        if(l <= 3000 && l >= 2950) {
+                            mp.release();
+                            playInterval();}
+                        if(l <= 4000 && l >= 3950) {
+                            mp.release();
+                            playInterval();}
                     }
                 }
 
@@ -147,7 +152,8 @@ public class Timer extends AppCompatActivity {
                         vibrate();
                     }
                     if(soundOn){
-                        mp2.start();
+                        mp.release();
+                        playFinish();
                     }
                     calcTime(0);
                 }
