@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.GridView;
 import android.widget.ToggleButton;
@@ -28,13 +29,14 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     private static NumberPicker numPick2;
     private Button startButton;
     private Button saveButton;
-    private ToggleButton togVib;
-    private ToggleButton togSound;
+    private Switch togVib;
+    private Switch togSound;
     private static long numPickValue1;
     private static long numPickValue2;
     private boolean vibOn;
     private boolean soundOn;
     private Vibrator vib;
+    private BottomNavigationView bottomNavigationView;
     private GestureDetectorCompat gDetector;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -43,14 +45,21 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                case R.id.navigation_quick_start:
+                    //mTextMessage.setText(R.string.title_home);
                     return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                case R.id.navigation_exercises:
+                    showGridMenu();
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                case R.id.navigation_save:
+                    //mTextMessage.setText(R.string.save_exercise);
+                    saveExercise();
+                    return false;
+                case R.id.navigation_about_tut:
+                    //mTextMessage.setText(R.string.title_notifications);
+                    return true;
+                case R.id.navigation_settings:
+                    //mTextMessage.setText(R.string.quick_start);
                     return true;
             }
             return false;
@@ -66,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         setContentView(R.layout.activity_main);
         init();
         vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        bottomNavigationView = findViewById(R.id.navigation);
     }
 
     @Override
@@ -99,14 +109,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             @Override
             public void onClick(View view) {
                 runQuickStart();
-            }
-        });
-        //Initialize saveButton and set onClick listener
-        saveButton = findViewById(R.id.saveButton);
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveExercise();
             }
         });
         //Initialize Toggle buttons
@@ -166,6 +168,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 EditText text = dialog.findViewById(R.id.nameid);
                 Exercise e = new Exercise(text.getText().toString(), numPick1.getValue(), numPick2.getValue(), soundOn, vibOn);
                 MyExercises.newExercise(e);
+                bottomNavigationView.setSelectedItemId(R.id.navigation_quick_start);
                 dialog.hide();
             }
         });

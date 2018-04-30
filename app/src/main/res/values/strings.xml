@@ -6,10 +6,14 @@
     <string name="vibration_on">Vibration On</string>
     <string name="vibration_off">Vibration Off</string>
     <string name="vibration">Vibration</string>
-    <string name="quick_start">Quick Start</string>
     <string name="sound_on">Sound On</string>
     <string name="sound_off">Sound Off</string>
     <string name="sound">Sound</string>
     <string name="start">Start</string>
     <string name="time" />
+    <string name="save_exercise">Save Exercise</string>
+    <string name="quick_start">Quick Start</string>
+    <string name="my_exercises">My Exercises</string>
+    <string name="about_time_under_tension">About time under tension</string>
+    <string name="settings">Settings</string>
 </resources>

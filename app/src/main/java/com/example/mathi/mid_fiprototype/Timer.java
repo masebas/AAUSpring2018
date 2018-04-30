@@ -52,16 +52,15 @@ public class Timer extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart(){
-        super.onStart();
-
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        vib.cancel();
-        countDownTimer.cancel();
+        finish();
     }
     public void playInterval(){
         mp = MediaPlayer.create(this, R.raw.interval);
@@ -83,7 +82,9 @@ public class Timer extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
+        countDownTimer.cancel();
+        mp.stop();
+        mp.release();
     }
 
     public void calcTime(int stage){

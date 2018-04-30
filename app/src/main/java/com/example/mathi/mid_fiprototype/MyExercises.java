@@ -1,9 +1,12 @@
 package com.example.mathi.mid_fiprototype;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,7 +24,33 @@ public class MyExercises extends AppCompatActivity implements GestureDetector.On
     private static List<String> conTime = new ArrayList<String>();
     private static List<String> soundCheck = new ArrayList<String>();
     private static List<String> vibCheck = new ArrayList<String>();
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_quick_start:
+                    Intent intent = new Intent(MyExercises.this, MainActivity.class);
+                    startActivity(intent);
+                    return true;
+                case R.id.navigation_exercises:
+                    return false;
+                case R.id.navigation_save:
+                    //mTextMessage.setText(R.string.save_exercise);
+                    Intent intent1 = new Intent(MyExercises.this, MainActivity.class);
+                    startActivity(intent1);
+                    return false;
+                case R.id.navigation_about_tut:
+                    //mTextMessage.setText(R.string.title_notifications);
+                    return true;
+                case R.id.navigation_settings:
+                    //mTextMessage.setText(R.string.quick_start);
+                    return true;
+            }
+            return false;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
