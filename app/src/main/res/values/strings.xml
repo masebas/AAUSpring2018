@@ -16,4 +16,7 @@
     <string name="my_exercises">My Exercises</string>
     <string name="about_time_under_tension">About time under tension</string>
     <string name="settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
