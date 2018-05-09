@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        app:itemIconTint="@android:color/black"
+        app:itemTextColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/navigation" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="169dp"
+        android:layout_height="50dp"
+        android:text="About TUT"
+        android:textSize="32sp"
+        tools:layout_editor_absoluteX="108dp"
+        tools:layout_editor_absoluteY="26dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="284dp"
+        android:layout_height="347dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Ut scelerisque molestie purus. Fusce eu egestas libero. In molestie, purus
+        ut aliquet mollis, risus mi aliquam risus, et fermentum tellus lorem ac est.
+        Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+        Pellentesque et imperdiet erat. Mauris vitae dictum magna, sit amet convallis erat.
+        commodo massa id odio tempor, sed pulvinar lectus faucibus. Nulla pharetra suscipit tempor.
+        Maecenas ut tellus aliquam, ornare lorem vitae, sagittis sem. Curabitur est purus, facil
+        um auctor et, viverra vel tellus. Donec eu nulla iaculis, tincidunt leo a, commodo nunc.
+        e consectetur velit nec dapibus ultrices. Nulla ornare congue velit, ut laoreet est ."
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="126dp" />
+
+
+</android.support.constraint.ConstraintLayout>
