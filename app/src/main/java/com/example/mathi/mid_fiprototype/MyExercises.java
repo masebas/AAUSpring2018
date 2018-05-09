@@ -2,20 +2,24 @@ package com.example.mathi.mid_fiprototype;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyExercises extends AppCompatActivity implements GestureDetector.OnGestureListener{
+public class MyExercises extends Fragment implements GestureDetector.OnGestureListener{
 
     private static List<Integer> iconsList = new ArrayList<Integer>();
     private static List<String> valuesList = new ArrayList<String>();
@@ -24,41 +28,14 @@ public class MyExercises extends AppCompatActivity implements GestureDetector.On
     private static List<String> conTime = new ArrayList<String>();
     private static List<String> soundCheck = new ArrayList<String>();
     private static List<String> vibCheck = new ArrayList<String>();
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_quick_start:
-                    Intent intent = new Intent(MyExercises.this, MainActivity.class);
-                    startActivity(intent);
-                    return true;
-                case R.id.navigation_exercises:
-                    return false;
-                case R.id.navigation_save:
-                    //mTextMessage.setText(R.string.save_exercise);
-                    Intent intent1 = new Intent(MyExercises.this, MainActivity.class);
-                    startActivity(intent1);
-                    return false;
-                case R.id.navigation_about_tut:
-                    //mTextMessage.setText(R.string.title_notifications);
-                    return true;
-                case R.id.navigation_settings:
-                    //mTextMessage.setText(R.string.quick_start);
-                    return true;
-            }
-            return false;
-        }
-    };
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_exercises);
-
-        GridView grid = (GridView) findViewById(R.id.grid);
-        GridAdapter adapter = new GridAdapter(MyExercises.this, iconsList, valuesList, eccTime, conTime, soundCheck, vibCheck);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_my_exercises, null);
+        GridView grid =  view.findViewById(R.id.grid);
+        GridAdapter adapter = new GridAdapter(getContext(), iconsList, valuesList, eccTime, conTime, soundCheck, vibCheck);
         grid.setAdapter(adapter);
 
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -69,14 +46,13 @@ public class MyExercises extends AppCompatActivity implements GestureDetector.On
                 extras.putLong("time2", exerciseList.get(position).getValue2());
                 extras.putBoolean("soundOn", exerciseList.get(position).isSound());
                 extras.putBoolean("vibOn", exerciseList.get(position).isVibration());
-                Intent startTimer = new Intent(MyExercises.this, Timer.class);
+                Intent startTimer = new Intent(getContext(), Timer.class);
                 startTimer.putExtras(extras);
                 startActivity(startTimer);
             }
         });
-
+            return view;
     }
-
     public static void newExercise(Exercise e){
         valuesList.add(e.getName());
         iconsList.add(R.drawable.icon);

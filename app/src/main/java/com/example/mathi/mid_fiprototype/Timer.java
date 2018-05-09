@@ -46,7 +46,7 @@ public class Timer extends AppCompatActivity {
 
         vib = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
         mStartButton.setEnabled(false);
-        calcTime(0);
+        calcTime(-1);
 
 
     }
@@ -90,7 +90,21 @@ public class Timer extends AppCompatActivity {
     public void calcTime(int stage){
         mp = MediaPlayer.create(this,R.raw.interval);
 
+        if(stage == -1){
+            countDownTimer = new CountDownTimer(10000, 1) {
+                @Override
+                public void onTick(long l) {
+                    timer.setText(Long.toString(l/100));
+                }
 
+                @Override
+                public void onFinish() {
+                    calcTime(0);
+                }
+            };
+            countDownTimer.start();
+
+        }
         if(stage == 0) {
             countDownTimer = new CountDownTimer(timeMillis1, 1) {
                 @Override
