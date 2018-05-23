@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragmentSettings">
-
+    
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="13dp"
-        android:text="@string/settings"
+        android:text="Settings"
         android:textSize="72sp" />
 
     <SeekBar
@@ -33,7 +33,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="21dp"
         android:layout_marginTop="199dp"
-        android:text="@string/notification_volume"
+        android:text="Notification Volume"
         android:textAlignment="center"
         android:textSize="22sp" />
 
@@ -44,7 +44,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/textView2"
         android:layout_marginTop="271dp"
-        android:text="@string/vibration_intensity"
+        android:text="Vibration Intensity"
         android:textAlignment="center"
         android:textSize="22sp" />
 
@@ -63,16 +63,17 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/textView2"
         android:layout_marginBottom="276dp"
-        android:text="@string/timer_buffer"
+        android:text="Timer Buffer"
         android:textAlignment="center"
         android:textSize="22sp" />
 
     <NumberPicker
         android:id="@+id/numPickBuffer"
         android:layout_width="220dp"
-        android:layout_height="80dp"
+        android:layout_height="40dp"
         android:layout_alignStart="@+id/volume"
-        android:layout_below="@+id/vibration">
+        android:layout_alignTop="@+id/textView4"
+        android:orientation="horizontal">
 
     </NumberPicker>
 
@@ -83,7 +84,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/textView2"
         android:layout_marginBottom="213dp"
-        android:text="@string/sound_default"
+        android:text="Sound Default"
         android:textAlignment="center"
         android:textSize="22sp" />
 
@@ -110,7 +111,7 @@
         android:textOn="@string/on" />
 
     <Switch
-        android:id="@+id/vibrationSwitch"
+        android:id="@+id/switch2"
         android:layout_width="220dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
@@ -121,14 +122,13 @@
         android:textOn="@string/on" />
 
     <Button
-        android:id="@+id/resetButton"
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
-        android:text="@string/reset_app"
-        android:layout_marginHorizontal="20dp"
-        tools:targetApi="26" />
+        android:text="@string/reset_app" 
+        android:layout_marginHorizontal="20dp"/>
 
 </RelativeLayout>

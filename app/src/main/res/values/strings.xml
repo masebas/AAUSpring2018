@@ -14,9 +14,21 @@
     <string name="save_exercise">Save Exercise</string>
     <string name="quick_start">Quick Start</string>
     <string name="my_exercises">My Exercises</string>
-    <string name="about_time_under_tension">About time under tension</string>
+    <string name="about_time_under_tension">About Tut</string>
     <string name="settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="vibration_default">Vibration Default</string>
+    <string name="off">Off</string>
+    <string name="on">On</string>
+    <string name="reset_app">Reset App</string>
+    <string name="sound_default">Sound Default</string>
+    <string name="timer_buffer">Timer Buffer</string>
+    <string name="vibration_intensity">Vibration Intensity</string>
+    <string name="notification_volume">Notification Volume</string>
+    <string name="tut_text">
+        Time under tension (TUT) refers to the amount of time the muscle is under stress during a set.
+        This amount of time consists of the concentric and eccentric phase of a workout, the shortening and the lengthening phase.
+        The recommended amount of time for the concentric and eccentric phase is 2 and 4 seconds, respectively, for getting the optimal results of a workout focused on hypertrophic response.</string>
 </resources>

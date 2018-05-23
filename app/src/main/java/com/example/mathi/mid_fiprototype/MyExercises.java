@@ -37,7 +37,6 @@ public class MyExercises extends Fragment implements GestureDetector.OnGestureLi
         GridView grid =  view.findViewById(R.id.grid);
         GridAdapter adapter = new GridAdapter(getContext(), iconsList, valuesList, eccTime, conTime, soundCheck, vibCheck);
         grid.setAdapter(adapter);
-
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {

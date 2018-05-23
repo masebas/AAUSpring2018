@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,14 +43,14 @@ public class QuickStart extends Fragment {
     private static boolean soundOn;
     private Vibrator vib;
 
-    private static List Exercises;
+    private static ArrayList<Exercise> Exercises;
 
     private static final String SHARED_PREFS = "sharedPrefs";
     private static final String SAVEDEXERCISES = "savedExercises";
 
 
     public QuickStart() {
-        // Required empty public constructor
+        // Required empty constructor
     }
 
 
@@ -66,6 +67,14 @@ public class QuickStart extends Fragment {
         vib = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
         init(v);
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        togSound.setChecked(soundOn);
+        togVib.setChecked(vibOn);
+
     }
 
     public void init(View v){
@@ -136,9 +145,12 @@ public class QuickStart extends Fragment {
                 @Override
                 public void onClick(View view) {
                     EditText text = dialog.findViewById(R.id.nameid);
-                    Exercise e = new Exercise(text.getText().toString(), numPick1.getValue(), numPick2.getValue(), soundOn, vibOn);
+                    Exercise e = new Exercise(text.getText().toString(),
+                            numPick1.getValue(),
+                            numPick2.getValue(),
+                            soundOn, vibOn);
                     Exercises.add(e);
-                    saveData(e);
+                    saveData();
                     MyExercises.newExercise(e);
                     dialog.hide();
                 }
@@ -153,13 +165,13 @@ public class QuickStart extends Fragment {
         }
 
     }
-    private static void saveData(Exercise e){
+    private static void saveData(){
         SharedPreferences sharedPreferences = MainActivity.getInstance().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor edit = sharedPreferences.edit();
-        edit.clear();
+        edit.remove(SAVEDEXERCISES);
         Gson gson = new Gson();
         String json = gson.toJson(Exercises);
-        edit.putString("exerciseList", json);
+        edit.putString(SAVEDEXERCISES, json);
         edit.apply();
     }
     public static void loadData(){
@@ -192,9 +204,12 @@ public class QuickStart extends Fragment {
     public static boolean isVibOn(){
         return vibOn;
     }
-    public static View loadView(Fragment fragment){
-        LayoutInflater inflater = (LayoutInflater) fragment.getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflater.inflate(R.layout.quick_start_layout, null);
-        return v;
+    public static void setSoundOn(boolean i){
+        soundOn = i;
+
+    }
+    public static void setVibOn(boolean i){
+        vibOn = i;
+
     }
 }
